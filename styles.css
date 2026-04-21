@@ -32,3 +32,26 @@ h1 {
 button {
   font-size: 1.5rem;
 }
+
+main {
+  display: flex;
+  justify-content: center;
+  margin: 2rem;
+}
+
+#contentContainer {
+  display: flex;
+  flex-wrap: wrap;
+  box-sizing: border-box;
+  width: 700px;
+  height: 700px;
+}
+
+.cell {
+  border: 1px solid black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: aliceblue;
+  box-sizing: border-box;
+}

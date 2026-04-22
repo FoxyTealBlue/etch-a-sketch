@@ -1,4 +1,3 @@
-console.log("Hello World!");
 const adjustGrid = document.querySelector("#adjustGrid");
 
 adjustGrid.addEventListener("click", () => createDiv(getNumber()));
@@ -16,18 +15,7 @@ function createDiv(number = 16) {
     createdDiv.classList.toggle("cell");
     createdDiv.style.height = cellHeight;
     createdDiv.style.width = cellWidth;
-    if (i === 0) {
-      createdDiv.style.borderTopLeftRadius = "10px";
-    }
-    if (i === number - 1) {
-      createdDiv.style.borderTopRightRadius = "10px";
-    }
-    if (i === number ** 2 - number) {
-      createdDiv.style.borderBottomLeftRadius = "10px";
-    }
-    if (i === number ** 2 - 1) {
-      createdDiv.style.borderBottomRightRadius = "10px";
-    }
+    roundCorners(i, number, createdDiv);
     createdDiv.addEventListener("mouseover", () => shadeCell(createdDiv));
     contentContainer.appendChild(createdDiv);
   }
@@ -43,4 +31,24 @@ function getNumber() {
 
 function shadeCell(cell) {
   cell.style.backgroundColor = "black";
+}
+
+function roundCorners(i, number, createdDiv) {
+  const isTopLeftBox = i === 0;
+  const isTopRightBox = i === number - 1;
+  const isBottomLeftBox = i === number ** 2 - number;
+  const isBottomRightBox = i === number ** 2 - 1;
+
+  if (isTopLeftBox) {
+    createdDiv.style.borderTopLeftRadius = "10px";
+  }
+  if (isTopRightBox) {
+    createdDiv.style.borderTopRightRadius = "10px";
+  }
+  if (isBottomLeftBox) {
+    createdDiv.style.borderBottomLeftRadius = "10px";
+  }
+  if (isBottomRightBox) {
+    createdDiv.style.borderBottomRightRadius = "10px";
+  }
 }

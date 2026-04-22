@@ -30,7 +30,29 @@ function getNumber() {
 }
 
 function shadeCell(cell) {
-  cell.style.backgroundColor = "black";
+  let cellBackgroundColor = getComputedStyle(cell).backgroundColor;
+  let shade = cellBackgroundColor
+    .substring(
+      cellBackgroundColor.indexOf("(") + 1,
+      cellBackgroundColor.indexOf(")"),
+    )
+    .split(",")
+    .map((element) => Number(element.trim()));
+  if (shade[3] === 0) {
+    const cellColor = randomCellColor();
+    cell.style.backgroundColor = `rgba(${cellColor[0]}, ${cellColor[1]}, ${cellColor[2]}, ${cellColor[3] + 0.1}`;
+  }
+  cellBackgroundColor = getComputedStyle(cell).backgroundColor;
+  shade = cellBackgroundColor
+    .substring(
+      cellBackgroundColor.indexOf("(") + 1,
+      cellBackgroundColor.indexOf(")"),
+    )
+    .split(",")
+    .map((element) => Number(element.trim()));
+  if (shade[3] < 1) {
+    cell.style.backgroundColor = `rgba(${shade[0]}, ${shade[1]}, ${shade[2]}, ${shade[3] + 0.1})`;
+  }
 }
 
 function roundCorners(i, number, createdDiv) {
@@ -51,4 +73,12 @@ function roundCorners(i, number, createdDiv) {
   if (isBottomRightBox) {
     createdDiv.style.borderBottomRightRadius = "10px";
   }
+}
+
+function randomCellColor() {
+  const r = Math.floor(Math.random() * 255);
+  const g = Math.floor(Math.random() * 255);
+  const b = Math.floor(Math.random() * 255);
+
+  return [r, g, b, 0];
 }

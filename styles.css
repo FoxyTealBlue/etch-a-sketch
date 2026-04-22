@@ -48,6 +48,8 @@ main {
   box-sizing: border-box;
   width: 700px;
   height: 700px;
+  background-color: rgba(255, 255, 255, 1);
+  border-radius: 10px;
 }
 
 .cell {
@@ -55,6 +57,6 @@ main {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: aliceblue;
+  background-color: rgba(0, 0, 0, 0);
   box-sizing: border-box;
 }
